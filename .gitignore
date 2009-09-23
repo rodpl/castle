@@ -1,0 +1,11 @@
+AssemblyInfo.cs
+bin
+obj
+*.user
+*.suo
+_ReSharper.*
+/build
+/test-results
+/Castle-all-vs2008.4.0.resharper
+/SharedLibs/net/NAnt.Core.dll
+/Facilities/Synchronize/Castle.Facilities.Synchronize/Castle.Facilities.Synchronize.xml

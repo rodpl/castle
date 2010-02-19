@@ -28,7 +28,7 @@ namespace Castle.Facilities.Db4oIntegration.Tests.Components
 
 		public virtual void Create(Beer beer)
 		{
-			_objContainer.Set(beer);
+			_objContainer.Store(beer);
 		}
 
 		public virtual void Remove(Beer beer)
@@ -43,7 +43,7 @@ namespace Castle.Facilities.Db4oIntegration.Tests.Components
 			query.Constrain(typeof(Beer));
 			query.Descend("_id").Constrain(id);
 
-			if (query.Execute().Size() == 0)
+			if (query.Execute().Count == 0)
 			{
 				return null;
 			}
@@ -55,7 +55,7 @@ namespace Castle.Facilities.Db4oIntegration.Tests.Components
 
 		public virtual IObjectSet FindAll()
 		{
-			return _objContainer.Get(typeof(Beer));
+			return _objContainer.QueryByExample(typeof(Beer));
 		}
 	}
 }

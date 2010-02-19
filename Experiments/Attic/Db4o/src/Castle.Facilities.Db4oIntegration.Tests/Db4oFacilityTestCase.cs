@@ -35,7 +35,7 @@ namespace Castle.Facilities.Db4oIntegration.Tests
 
 			try
 			{
-				db4oContainer.Set(new Beer(id));
+				db4oContainer.Store(new Beer(id));
 			}
 			catch
 			{
@@ -46,7 +46,7 @@ namespace Castle.Facilities.Db4oIntegration.Tests
 				db4oContainer.Commit();
 			}
 
-			IObjectSet results = db4oContainer.Get(typeof(Beer));
+			IObjectSet results = db4oContainer.QueryByExample(typeof(Beer));
 
 			Assert.AreEqual(1, results.Count);
 			Beer loaded = (Beer)results[0];
@@ -55,7 +55,7 @@ namespace Castle.Facilities.Db4oIntegration.Tests
 			db4oContainer.Delete(loaded);
 			db4oContainer.Commit();
 
-			results = db4oContainer.Get(typeof(Beer));
+			results = db4oContainer.QueryByExample(typeof(Beer));
 			Assert.AreEqual(0, results.Count);
 		}
 	}
